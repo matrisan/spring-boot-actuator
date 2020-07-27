@@ -1,5 +1,6 @@
 package com.github.springbootactuator.health;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.stereotype.Component;
@@ -20,11 +21,13 @@ import org.springframework.stereotype.Component;
  */
 
 
+@Slf4j
 @Component("ActHealth")
 public class ActuatorHealthIndicator implements HealthIndicator {
     @Override
     public Health health() {
         // return Health.down().withDetail("error","spring boot error").build();
+        log.info("ActuatorHealthIndicator");
         return Health.up().withDetail("up", "spring boot up").build();
     }
 }
